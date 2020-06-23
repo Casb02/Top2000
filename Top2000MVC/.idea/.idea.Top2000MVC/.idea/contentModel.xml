@@ -29,6 +29,7 @@
         <e p="Controllers" t="Include">
           <e p="AccountController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="List.cs" t="Include" />
           <e p="ManageController.cs" t="Include" />
         </e>
         <e p="favicon.ico" t="Include" />
@@ -91,6 +92,7 @@
             <e p="Contact.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
+          <e p="List" t="Include" />
           <e p="Manage" t="Include">
             <e p="AddPhoneNumber.cshtml" t="Include" />
             <e p="ChangePassword.cshtml" t="Include" />
