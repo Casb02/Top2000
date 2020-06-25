@@ -4,15 +4,19 @@
 @model IEnumerable<Top2000MVC.Models.Rank>
 
 @{
-    ViewBag.Title = "ListIndex";
+    ViewBag.Title = "Lijst";
 }
 
-    <h2>De top 2000 - </h2>
+    <h2>De top 2000 - @ViewBag.Year</h2>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/List/year/2019">2019</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/List/year/2018">2018</a>
+        </li>
 
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+    </ul>
     <table class="table">
         <tr>
             <th>
@@ -27,7 +31,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Track.release)
             </th>
-            <th></th>
+            @* <th></th> *@
         </tr>
 
         @foreach (var item in Model)
@@ -45,11 +49,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Track.release)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
+                @* <td> *@
+                @*     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) | *@
+                @*     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
+                @*     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+                @* </td> *@
             </tr>
         }
 

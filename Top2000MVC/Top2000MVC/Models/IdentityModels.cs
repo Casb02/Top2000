@@ -21,7 +21,7 @@ namespace Top2000MVC.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Top2000", throwIfV1Schema: false)
         {
         }
 
@@ -29,5 +29,7 @@ namespace Top2000MVC.Models
         {
             return new ApplicationDbContext();
         }
+
+        
     }
 }

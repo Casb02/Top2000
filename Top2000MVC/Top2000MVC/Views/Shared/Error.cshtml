@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Error";
 }
-
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
+    <div style="text-align: center; margin-top: 15vh; margin-bottom: 15vh">
+        <h1 style="font-size: 100px" class="text-danger">Oeps!</h1>
+        <br />
+        <h2 class="text-danger">Er ging iets niet helemaal goed.</h2>
+        <h5 class="text-warning" style="">Reden: @ViewBag.Error</h5>
+    </div>

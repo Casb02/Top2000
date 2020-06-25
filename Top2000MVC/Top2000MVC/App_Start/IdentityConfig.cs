@@ -106,4 +106,5 @@ namespace Top2000MVC
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
 }

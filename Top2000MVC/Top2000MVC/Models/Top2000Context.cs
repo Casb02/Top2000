@@ -10,13 +10,18 @@ namespace Top2000MVC.Models
     public partial class Top2000Context : DbContext
     {
         public Top2000Context()
-            : base("name=Top2000Context")
+            : base("name=Top2000")
         {
         }
 
         public virtual DbSet<Artist> Artist { get; set; }
         public virtual DbSet<Rank> Rank { get; set; }
         public virtual DbSet<Track> Track { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +43,21 @@ namespace Top2000MVC.Models
                 .WithRequired(e => e.Track)
                 .HasForeignKey(e => e.Track_trackID)
                 .WillCascadeOnDelete(false);
+            modelBuilder.Entity<AspNetRoles>()
+                .HasMany(e => e.AspNetUsers)
+                .WithMany(e => e.AspNetRoles)
+                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+
+            modelBuilder.Entity<AspNetUsers>()
+                .HasMany(e => e.AspNetUserClaims)
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<AspNetUsers>()
+                .HasMany(e => e.AspNetUserLogins)
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserId);
+
         }
 
         

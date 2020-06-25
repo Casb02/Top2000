@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using System.Text.RegularExpressions
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -6,9 +7,19 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Welkom " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
+        @if (User.IsInRole("Admin"))
+        {
+
+            <li>
+                @Html.ActionLink("Welkom " + User.Identity.GetUserName() + " (Admin Account)", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
+            </li>
+        }
+        else
+        {
+            <li>
+                @Html.ActionLink("Welkom " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
+            </li>
+        }
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log uit</a></li>
     </ul>
     }
